@@ -28,7 +28,7 @@
     "@typescript-eslint/triple-slash-reference": "error",
     "react/jsx-uses-vars": "error",
     "react/jsx-uses-react": "error",
-    "endofLine": "auto"
+    "prettier/prettier":0
   },
   "settings": {
     "react": {

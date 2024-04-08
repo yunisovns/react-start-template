@@ -42,15 +42,70 @@
  * - category (Категория)
  * - type ('Profit')
  * */
+type Category = {
+  id: number;
+  name: string;
+  photo?: string;
+};
+
+type Product = {
+  id: string;
+  name: string;
+  photo: string;
+  desc?: string;
+  createdAt: string;
+  oldPrice?: number;
+  price: number;
+  category: Category;
+};
+
+type Cost = {
+  id: string;
+  name: string;
+  desc?: string;
+  createdAt: string;
+  amount: number;
+  category: Category;
+  type: 'Cost';
+
+};
+
+type Profit = {
+  id: string;
+  name: string;
+  desc?: string;
+  createdAt: string;
+  amount: number;
+  category: Category;
+  type: Profit;
+
+};
+
+type OperationValue = Cost | Profit;
+
+type Operation = {
+  type: 'Cost' | 'Profit';
+  value: OperationValue;
+};
 
 /**
  * Создает случайный продукт (Product).
  * Принимает дату создания (строка)
  * */
-// export const createRandomProduct = (createdAt: string) => {};
+export const createRandomProduct = (createdAt: string) => {
+  return{
+    id: Math.random().toString(),
+    name: `Product ${Math.random().toString()}`,
+    photo: `https:${Math.random().toString()}`,
+    desc: `Product ${Math.random().toString()}`,
+    createdAt
+  }
+};
 
 /**
  * Создает случайную операцию (Operation).
  * Принимает дату создания (строка)
  * */
 // export const createRandomOperation = (createdAt: string) => {};
+
+

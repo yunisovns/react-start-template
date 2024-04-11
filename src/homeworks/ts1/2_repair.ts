@@ -35,6 +35,7 @@ export type Percent = {
 };
 
 // Здесь, возможно, нужно использовать as, возможно в switch передавать немного по-другому
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const getDataAmount = (data: Data): number => {
   switch (data.type) {
     case 'Money':

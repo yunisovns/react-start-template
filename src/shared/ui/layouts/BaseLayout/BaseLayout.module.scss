@@ -1,0 +1,9 @@
+.header {
+  position: sticky;
+  top: 0;
+}
+
+.main {
+  @include container();
+  padding: 24px;
+}

@@ -1,15 +1,15 @@
 import React, { memo } from 'react';
-import { AppLogo } from '../ui/AppLogo';
+import { AppLogo } from '../AppLogo';
 import s from './Header.module.scss';
 
 export const Header = memo(() => {
   return (
-    <div className={s.outer}>
-      <div className={s.container}>
-        <AppLogo className={s.logo} />
-        <div className={s.right}>Право</div>
+    <header className={s.header}>
+      <div className={s.wrapper}>
+        <AppLogo />
       </div>
-    </div>
+      <div className={s.inform}>RU</div>
+    </header>
   );
 });
 

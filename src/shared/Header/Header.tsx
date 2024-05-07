@@ -1,14 +1,19 @@
 import React, { memo } from 'react';
 import { AppLogo } from '../AppLogo';
-import s from './Header.module.scss';
+import { Avatar } from './Avatar';
 
 export const Header = memo(() => {
   return (
-    <header className={s.header}>
-      <div className={s.wrapper}>
-        <AppLogo />
+    <header className="box-border flex items-center border-0 border-b-4 border-solid border-indigo-500 bg-white px-7 py-4">
+      <AppLogo />
+      <div className="flex w-full flex-row flex-wrap items-center justify-between">
+        <div className="flex w-full flex-row flex-wrap items-center gap-5 justify-end">
+          <div>Поиск</div>
+          <div>RU</div>
+          <p>Страница</p>
+          <Avatar />
+        </div>
       </div>
-      <div className={s.inform}>RU</div>
     </header>
   );
 });

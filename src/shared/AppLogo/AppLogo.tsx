@@ -6,8 +6,8 @@ interface AppLogoProps {
 
 export const AppLogo = memo(({ className }: AppLogoProps) => {
   return (
-    <div className='text-9xl text-gray-700'>
-      <span className="text-9xl font-bold text-gray-400">sinet</span>
+    <div className="mr-8">
+      <span className=" text-center text-5xl uppercase leading-9 tracking-widest text-slate-950">sinet</span>
     </div>
   );
 });

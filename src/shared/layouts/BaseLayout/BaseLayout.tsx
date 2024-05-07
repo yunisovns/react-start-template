@@ -1,6 +1,5 @@
 import React, { ReactNode } from 'react';
 import { Header } from '../../Header';
-import s from './BaseLayout.module.scss';
 
 interface BaseLayoutProps {
   children: ReactNode;
@@ -9,10 +8,10 @@ interface BaseLayoutProps {
 export const BaseLayout = ({ children }: BaseLayoutProps) => {
   return (
     <>
-      <div className={s.headerLayout}>
+      <div className=' sticky top-0 w-full'>
         <Header />
       </div>
-      <div>{children}</div>
+      <div className='p-5'>{children}</div>
     </>
   );
 };

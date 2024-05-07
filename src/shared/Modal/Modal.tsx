@@ -1,6 +1,6 @@
 import React from 'react';
+import '../../index.css';
 import { Portal } from '../Portal';
-import s from './Modal.module.scss';
 
 interface ModalProps {
   children: React.ReactNode;
@@ -12,10 +12,10 @@ export const Modal = ({ children, onClose, visible }: ModalProps) => {
   if (!visible) return null;
   return (
     <Portal>
-      <div className={s.overlay}>
-        <div className={s.modal} onClick={() => onClose?.()}>
-        <button className={s.close}>&times;</button>
-        {children}
+      <div className="text-5xl">
+        <div onClick={() => onClose?.()}>
+          <button>&times;</button>
+          {children}
         </div>
       </div>
     </Portal>

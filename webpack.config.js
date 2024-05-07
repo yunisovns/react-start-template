@@ -43,44 +43,12 @@ module.exports = (_, args) => {
           exclude: /node_modules/,
         },
         {
-          test: /\.less$/,
-          use: [
-            {
-              loader: MiniCssExtractPlugin.loader,
-            },
-            'css-loader',
-            'less-loader',
-          ],
-        },
-        {
           test: /\.css$/,
-          use: [
-            {
-              loader: MiniCssExtractPlugin.loader,
-            },
-            'css-loader',
-          ],
+          use: ['style-loader', 'css-loader', 'postcss-loader'],
         },
         {
           test: /\.svg/,
           type: 'asset/inline',
-        },
-        {
-          test: /\.s[ac]ss$/i,
-          use: [
-            {
-              loader: MiniCssExtractPlugin.loader,
-            },
-            {
-              loader: 'css-loader',
-              options: {
-                modules: {
-                  localIdentName: '[name]_[local]-[hash:base64:5]',
-                },
-              },
-            },
-            'sass-loader',
-          ],
         },
       ],
     },

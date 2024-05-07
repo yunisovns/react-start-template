@@ -1,5 +1,4 @@
 import React, { memo } from 'react';
-import s from './AppLogo.module.scss';
 
 interface AppLogoProps {
   className?: string;
@@ -7,8 +6,8 @@ interface AppLogoProps {
 
 export const AppLogo = memo(({ className }: AppLogoProps) => {
   return (
-    <div className={s.logo}>
-      <span className={s.text}>SINET</span>
+    <div className='text-9xl text-gray-700'>
+      <span className="text-9xl font-bold text-gray-400">sinet</span>
     </div>
   );
 });

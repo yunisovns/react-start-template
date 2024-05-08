@@ -1,13 +1,15 @@
 import React from 'react';
-import avatar from './avatar.svg';
-import './index.css';
+import ModalInputButton from './shared/ModalInputButton/ModalInputButton';
+import { BaseLayout } from './shared/layouts/BaseLayout';
 
 function App() {
   return (
     <div>
-      <header>
-        <img src={avatar} alt="logo" />
-        <div className="text-center text-1xl m-5">
+      <BaseLayout>
+        <ModalInputButton />
+      </BaseLayout>
+      <body className="flex flex-col items-center justify-center">
+        <div className="text-1xl m-5 w-1/2 text-center">
           <h3 className="italic">Юнисов Никита</h3>
           <p>г.Москва</p>
           <h3>Цели обучения</h3>
@@ -20,8 +22,7 @@ function App() {
             которые сам же и находил.
           </p>
         </div>
-      </header>
-      <body></body>
+      </body>
     </div>
   );
 }

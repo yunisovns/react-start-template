@@ -13,9 +13,9 @@ const ModalInputButton: FC = () => {
   };
 
   return (
-    <div className="dark:bg-gray-900  dark:text-white">
+    <div className="flex  flex-col items-center justify-center dark:bg-slate-800 dark:text-white">
       <input
-        className="rounded px-4 py-2 transition duration-300 dark:bg-gray-900  dark:text-white"
+        className="rounded px-4 py-2 transition duration-300 dark:bg-slate-800  dark:text-white"
         placeholder="Modal Text"
         value={inputValue}
         onChange={onModalTextChange}
@@ -23,7 +23,7 @@ const ModalInputButton: FC = () => {
       <button
         onClick={openModal}
         type="button"
-        className="mt-5 flex w-auto items-center justify-center rounded-bl-lg rounded-br-lg rounded-tr-lg bg-indigo-100 py-2 font-semibold shadow-lg hover:bg-gray-300 hover:shadow-xl dark:bg-indigo-500"
+        className="dark:bg-slate-800-indigo-500 mt-5 flex w-auto items-center justify-center rounded-bl-lg rounded-br-lg rounded-tr-lg bg-indigo-100 py-2 font-semibold shadow-lg hover:bg-gray-300 hover:shadow-xl"
       >
         Открыть модальное окно
       </button>

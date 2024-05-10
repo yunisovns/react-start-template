@@ -18,8 +18,11 @@ export const ThemeSwitchButton = () => {
   };
 
   return (
-    <button className="h-8 w-8 rounded-full" onClick={handleThemeSwitch}>
-      {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
+    <button
+      className="dark:bg-slate-800-slate-800 h-8 w-8 border-none bg-none bg-white hover:cursor-pointer dark:bg-slate-800"
+      onClick={handleThemeSwitch}
+    >
+      {theme === 'dark' ? <SunIcon className='text-white' /> : <MoonIcon />}
     </button>
   );
 };

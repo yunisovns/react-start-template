@@ -4,11 +4,11 @@ import { BaseLayout } from './shared/layouts/BaseLayout';
 
 function App() {
   return (
-    <div className="h-screen w-full dark:bg-gray-900 dark:text-white">
+    <div className="h-screen w-full flex-col dark:bg-slate-800 dark:text-white">
       <BaseLayout>
         <ModalInputButton />
       </BaseLayout>
-      <div className="text-1xl m-5 w-1/2 text-center">
+      <div className="text-1xl m-5 flex h-1/2 flex-col text-center">
         <h3 className="italic">Юнисов Никита</h3>
         <p>г.Москва</p>
         <h3>Цели обучения</h3>

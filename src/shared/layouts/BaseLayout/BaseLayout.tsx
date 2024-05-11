@@ -8,10 +8,10 @@ interface BaseLayoutProps {
 export const BaseLayout = ({ children }: BaseLayoutProps) => {
   return (
     <>
-      <div className=" dark:bg-slate-800-indigo-900 sticky top-0 h-max w-full dark:text-white">
+      <div className="sticky top-0 m-0 box-content h-max w-full dark:bg-slate-800 dark:text-white">
         <Header />
       </div>
-      <div className="p-5">{children}</div>
+      <div className="p-5 dark:bg-slate-800 dark:text-white">{children}</div>
     </>
   );
 };

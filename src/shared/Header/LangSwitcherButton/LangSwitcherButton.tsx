@@ -15,7 +15,7 @@ export const LangSwitcherButton = () => {
     <>
       <button
         onClick={toggleLanguage}
-        className=" flex h-6 justify-center rounded-full bg-white text-center hover:cursor-pointer dark:bg-slate-800 dark:text-white"
+        className=" flex h-6 w-6 justify-center rounded-full bg-white text-center hover:cursor-pointer dark:bg-slate-800 dark:text-white"
       >
         {language}
       </button>

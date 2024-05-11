@@ -4,7 +4,9 @@ import { LangSwitcherButton } from './LangSwitcherButton';
 const meta: Meta<typeof LangSwitcherButton> = {
   title: 'shared/LangSwitcherButton',
   component: LangSwitcherButton,
-  args: {},
+  args: {
+    
+  },
 };
 
 export default meta;

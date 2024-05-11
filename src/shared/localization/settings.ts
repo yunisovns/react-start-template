@@ -10,18 +10,15 @@ export enum Locale {
   en = 'en',
 }
 
-
 i18n
-  .use(HttpApi) // Загружать переводы с сервера
-  .use(LanguageDetector) // Определять язык браузера пользователя
-  .use(initReactI18next) // Инициализировать react-i18next
+  .use(HttpApi)
+  .use(LanguageDetector)
+  .use(initReactI18next)
   .init({
-    supportedLngs: ['en', 'ru'], // Поддерживаемые языки
+    supportedLngs: ['en', 'ru'],
     lng: localStorage.getItem(LANG_STORAGE_KEY) || Locale.ru,
-    fallbackLng: 'en', // Язык по умолчанию
-    detection: {
-      // Опции для определения языка
-    },
+    fallbackLng: 'en',
+    detection: {},
     resources: {
       en: {
         translation: {
@@ -35,35 +32,7 @@ i18n
           welcome_message: 'Добро пожаловать в наше приложение!',
         },
       },
-
-      // backend: {
-      // Опции для загрузки переводов
-      //   loadPath: '/localization/{{lng}}/{{ns}}.json', // Путь к файлам переводов
-      // },
-      // Остальные настройки...
     },
   });
 
 export default i18n;
-
-// import  {default as i18n, InitOptions } from 'i18next';
-// import { initReactI18next } from 'react-i18next';
-// import { resources } from './resources';
-
-// export const LANG_STORAGE_KEY = 'lang';
-
-// export enum Locale {
-//   ru = 'ru',
-//   en = 'en',
-// }
-
-// i18n.use(initReactI18next).init({
-//   resources,
-//   lng: localStorage.getItem(LANG_STORAGE_KEY) || Locale.ru,
-
-//   interpolation: {
-//     escapeValue: false,
-//   },
-// } as InitOptions);
-
-// export default i18n;

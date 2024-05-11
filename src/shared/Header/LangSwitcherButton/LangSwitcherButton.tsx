@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import '../../localization/settings';
 
 export const LangSwitcherButton = () => {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const [language, setLanguage] = useState(i18n.language);
   const toggleLanguage = () => {
     const newLanguage = language === 'en' ? 'ru' : 'en';
@@ -19,7 +19,6 @@ export const LangSwitcherButton = () => {
       >
         {language}
       </button>
-      <p>{t('welcome_message')}</p>
     </>
   );
 };

@@ -3,7 +3,7 @@ import { Portal } from '../Portal';
 
 interface ModalProps {
   children?: React.ReactNode;
-  visible?: boolean;
+  visible: boolean;
   onClose: () => void;
 }
 

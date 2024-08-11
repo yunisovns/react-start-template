@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import ModalInputButton from './shared/ModalInputButton/ModalInputButton';
 import { BaseLayout } from './shared/layouts/BaseLayout';
 import { LocalizationInitiator } from './shared/localization/LocalizationInitiator';
+import OperationList from './widgets/OperationList/OperationList';
 
 function App() {
   const { t } = useTranslation();
@@ -26,6 +27,7 @@ function App() {
           находил.
         </p>
       </div>
+      <OperationList />
     </div>
   );
 }

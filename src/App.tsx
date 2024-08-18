@@ -4,6 +4,9 @@ import ModalInputButton from './shared/ModalInputButton/ModalInputButton';
 import { BaseLayout } from './shared/layouts/BaseLayout';
 import { LocalizationInitiator } from './shared/localization/LocalizationInitiator';
 import OperationList from './widgets/OperationList/OperationList';
+import LoginPage from './features/forms/LoginForm';
+import RegisterPage from './features/forms/RegForm';
+import AddOperationForm from './features/forms/AddOperationForm';
 
 function App() {
   const { t } = useTranslation();
@@ -13,6 +16,10 @@ function App() {
       <BaseLayout>
         <ModalInputButton />
       </BaseLayout>
+      <LoginPage />
+      <RegisterPage />
+      <AddOperationForm />
+
       <div className="text-1xl m-5 flex h-1/2 flex-col text-center">
         <p>{t('welcome_message')}</p>
         <h3 className="italic">Юнисов Никита</h3>

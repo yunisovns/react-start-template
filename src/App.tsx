@@ -8,7 +8,7 @@ import PrivateRoute from './shared/Routes/PrivateRoute';
 import { BaseLayout } from './shared/layouts/BaseLayout';
 import { LocalizationInitiator } from './shared/localization/LocalizationInitiator';
 import { MainPage } from './widgets/MainPage/mainpage';
-import OperationList from './widgets/OperationList/OperationList';
+import OperationList from './widgets/OperationList/OperationList2';
 
 function App() {
   return (

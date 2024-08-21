@@ -1,7 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import LoginForm from './features/forms/LoginForm';
+import RegForm from './features/forms/RegForm';
 import ModalInputButton from './shared/ModalInputButton/ModalInputButton';
 import { ProfilePage } from './shared/Profile/ProfilePage';
+import PrivateRoute from './shared/Routes/PrivateRoute';
 import { BaseLayout } from './shared/layouts/BaseLayout';
 import { LocalizationInitiator } from './shared/localization/LocalizationInitiator';
 import { MainPage } from './widgets/MainPage/mainpage';
@@ -14,10 +17,12 @@ function App() {
         <LocalizationInitiator />
         <BaseLayout>
           <Routes>
-            <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/operation" element={<OperationList />} />
+            <Route path="/login" element={<LoginForm />} />
+            <Route path="/register" element={<RegForm />} />
+            <Route path="/profile" element={<PrivateRoute element={<ProfilePage />} />} />
+            <Route path="/operation" element={<PrivateRoute element={<OperationList />} />} />
             <Route path="/modal" element={<ModalInputButton />} />
-            <Route path="/main" element={<MainPage />} />
+            <Route path="/" element={<MainPage />} />
           </Routes>
         </BaseLayout>
       </div>

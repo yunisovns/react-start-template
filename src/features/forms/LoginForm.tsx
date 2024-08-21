@@ -1,12 +1,20 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
+import { setInitialized, setToken } from '../../store/authSlice';
+import { RootState } from '../../store/store';
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm: React.FC = () => {
+  const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
+  const dispatch = useDispatch();
+  
 
   const onSubmit = (data: any) => {
-    console.log(data);
-    // добавить логику для отправки данных на сервер для аутентификации
+    dispatch(setInitialized());
+    dispatch(setToken('123'));
+    navigate('/profile');
   };
 
   return (

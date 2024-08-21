@@ -21,17 +21,17 @@ export const Header = memo(() => {
 
       <div className="flex w-full  flex-row flex-wrap items-center justify-between">
         <div className="flex w-full flex-row flex-wrap items-center justify-end gap-5">
-          <div className="flex items-center gap-1">
-            <Link to="/" className="flex items-center gap-1">
+          <div className="flex items-center gap-4">
+            <Link to="/" className="text-lg hover:text-indigo-400 transition-colors duration-300">
               Главная
             </Link>
-            <Link to="/profile" className="flex items-center gap-1">
+            <Link to="/profile" className="text-lg hover:text-indigo-400 transition-colors duration-300">
               Профиль
             </Link>
-            <Link to="/operation" className="flex items-center gap-1">
+            <Link to="/operation" className="text-lg hover:text-indigo-400 transition-colors duration-300">
               Операции
             </Link>
-            <Link to="/modal" className="flex items-center gap-1">
+            <Link to="/modal" className="text-lg hover:text-indigo-400 transition-colors duration-300">
               модальное окно
             </Link>
           </div>

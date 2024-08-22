@@ -2,7 +2,7 @@ import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useRegisterUserMutation } from '../../api/registrationApi';
+import { useRegisterUserMutation, useLoginUserMutation } from '../../api/registrationApi';
 import { setToken } from '../../store/authSlice';
 
 interface IFormInput {
@@ -19,11 +19,11 @@ const LoginForm: React.FC = () => {
   } = useForm<IFormInput>();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [loginUser, { isLoading }] = useRegisterUserMutation();
+  const [loginUser, { isLoading }] = useLoginUserMutation();
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     try {
-      const response = await loginUser(data).unwrap();
+      const response = await loginUser({...data, commandId: "23209230423539"}).unwrap();
       if (response.token) {
         dispatch(setToken(response.token));
         navigate('/profile');

@@ -3,6 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 interface SignUpBody {
   email: string;
   password: string;
+  commandId: string;
 }
 
 interface AuthResult {
@@ -30,4 +31,4 @@ export const registrationApi = createApi({
   }),
 });
 
-export const { useRegisterUserMutation } = registrationApi;
+export const { useRegisterUserMutation, useLoginUserMutation } = registrationApi;

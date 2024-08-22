@@ -23,7 +23,7 @@ const RegForm: React.FC = () => {
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     try {
-      const response = await registerUser(data).unwrap();
+      const response = await registerUser({...data, commandId: "23209230423539"}).unwrap();
       if (response.token) {
         dispatch(setToken(response.token));
         navigate('/profile');

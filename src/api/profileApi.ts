@@ -4,14 +4,27 @@ export type Profile = {
   id: string;
   name: string;
   email: string;
-  signUpDate: string; // Изменил на строку для упрощения сериализации
+  signUpDate: string;
   commandId: string;
+};
+
+export type UpdateProfileBody = {
+  name: string;
+};
+
+export type ChangePasswordBody = {
+  password: string;
+  newPassword: string;
+};
+
+export type ChangePasswordResult = {
+  success: boolean;
 };
 
 const getToken = () => localStorage.getItem('token');
 
-export const apiSlice = createApi({
-  reducerPath: 'api',
+export const profileApi = createApi({
+  reducerPath: 'profileApi',
   baseQuery: fetchBaseQuery({
     baseUrl: 'http://19429ba06ff2.vps.myjino.ru/api',
     prepareHeaders: (headers) => {
@@ -26,7 +39,21 @@ export const apiSlice = createApi({
     getProfile: builder.query<Profile, void>({
       query: () => '/profile',
     }),
+    updateProfile: builder.mutation<Profile, UpdateProfileBody>({
+      query: (body) => ({
+        url: '/profile',
+        method: 'PATCH',
+        body,
+      }),
+    }),
+    changePassword: builder.mutation<ChangePasswordResult, ChangePasswordBody>({
+      query: (body) => ({
+        url: '/profile/change-password',
+        method: 'POST',
+        body,
+      }),
+    }),
   }),
 });
 
-export const { useGetProfileQuery } = apiSlice;
+export const { useGetProfileQuery, useUpdateProfileMutation, useChangePasswordMutation } = profileApi;

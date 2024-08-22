@@ -1,13 +1,14 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-interface Operation {
-  id: string;
+export interface Operation {
+  id?: string;
   name: string;
   desc?: string;
   amount: number;
   date: string;
   type: 'Profit' | 'Cost';
   categoryId: string;
+  commandId: string;
 }
 
 interface Pagination {
@@ -70,10 +71,21 @@ interface Filters {
     field: 'id' | 'createdAt' | 'updatedAt' | 'name' | 'date';
   };
 }
+const getToken = () => localStorage.getItem('token');
 
 export const operationsApi = createApi({
   reducerPath: 'operationsApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://19429ba06ff2.vps.myjino.ru/api' }), // Замените '/api' на реальный URL
+    
+  baseQuery: fetchBaseQuery({
+    baseUrl: 'http://19429ba06ff2.vps.myjino.ru/api',
+    prepareHeaders: (headers) => {
+      const token = getToken();
+      if (token) {
+        headers.set('authorization', `Bearer ${token}`);
+      }
+      return headers;
+    },
+  }),
   endpoints: (builder) => ({
     getOperations: builder.query<GetOperationsResponse, Filters>({
       query: (filters) => {

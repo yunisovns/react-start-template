@@ -9,6 +9,7 @@ import { BaseLayout } from './shared/layouts/BaseLayout';
 import { LocalizationInitiator } from './shared/localization/LocalizationInitiator';
 import { MainPage } from './widgets/MainPage/mainpage';
 import OperationList from './widgets/OperationList/OperationList2';
+import LoginPage from './widgets/LoginPage';
 
 function App() {
   return (
@@ -17,8 +18,7 @@ function App() {
         <LocalizationInitiator />
         <BaseLayout>
           <Routes>
-            <Route path="/login" element={<LoginForm />} />
-            <Route path="/register" element={<RegForm />} />
+            <Route path="/login" element={<LoginPage />} />
             <Route path="/profile" element={<PrivateRoute element={<ProfilePage />} />} />
             <Route path="/operation" element={<PrivateRoute element={<OperationList />} />} />
             <Route path="/modal" element={<ModalInputButton />} />

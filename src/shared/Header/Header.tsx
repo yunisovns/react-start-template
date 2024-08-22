@@ -44,6 +44,11 @@ export const Header = memo(() => {
               Выйти
             </button>
           )}
+          {!isToken && (
+            <Link to="/login" className="text-lg hover:text-indigo-400 transition-colors duration-300">
+            Логин
+          </Link>
+          )}
         </div>
       </div>
     </header>

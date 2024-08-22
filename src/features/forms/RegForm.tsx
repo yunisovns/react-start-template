@@ -2,7 +2,7 @@ import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useRegisterUserMutation } from '../../services/registrationApi';
+import { useRegisterUserMutation } from '../../api/registrationApi';
 import { setToken } from '../../store/authSlice';
 
 interface IFormInput {
@@ -72,32 +72,9 @@ const RegForm: React.FC = () => {
         disabled={isLoading}
         className="w-full rounded-md bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
       >
-        {isLoading ? 'Registering...' : 'Register'}
+        {isLoading ? 'Регистрация...' : 'Зарегистрироваться'}
       </button>
     </form>
-
-    //* // <div>
-    //   <h2 className="text-2xl font-bold mb-4">Регистрация</h2>
-    //   <form
-    //   className="max-w-md mx-auto p-4 bg-white shadow-md rounded"
-    //   onSubmit={handleSubmit(onSubmit)}>
-    //     <label>
-    //       Имя:
-    //       <input type="text" {...register('firstName', { required: true })} />
-    //     </label>
-    //     <label>
-    //       Email:
-    //       <input type="email" {...register('email', { required: true })} />
-    //     </label>
-    //     <br />
-    //     <label>
-    //       Пароль:
-    //       <input type="password" {...register('password', { required: true })} />
-    //     </label>
-    //     <br />
-    //     <button type="submit">Зарегистрироваться</button>
-    //   </form>
-    // </div> */
   );
 };
 

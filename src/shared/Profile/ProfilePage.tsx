@@ -1,10 +1,10 @@
 import React from 'react';
+import ProfileForm from './../../features/forms/ProfileForm';
 
 export const ProfilePage = () => {
   return (
     <div>
-      <h1>Страница профиля</h1>
-      <div>Ты авторизован!</div>
+      <ProfileForm />
     </div>
   );
 };

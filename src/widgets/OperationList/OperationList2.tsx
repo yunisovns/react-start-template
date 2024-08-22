@@ -1,5 +1,5 @@
 import React from 'react';
-import { useGetOperationsQuery } from '../../services/operationsApi';
+import { useGetOperationsQuery } from '../../api/operationsApi';
 
 const OperationsList: React.FC = () => {
   const { data, error, isLoading } = useGetOperationsQuery({
@@ -8,7 +8,7 @@ const OperationsList: React.FC = () => {
   });
 
   if (isLoading) return <div>Loading...</div>;
-   if (error) return <div>Error: {error as string}</div>;
+  if (error) return <div>Error: {error as string}</div>;
 
   return (
     <div>

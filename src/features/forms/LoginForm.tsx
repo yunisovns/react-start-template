@@ -2,7 +2,7 @@ import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useRegisterUserMutation } from '../../services/registrationApi';
+import { useRegisterUserMutation } from '../../api/registrationApi';
 import { setToken } from '../../store/authSlice';
 
 interface IFormInput {
@@ -72,7 +72,7 @@ const LoginForm: React.FC = () => {
         disabled={isLoading}
         className="w-full rounded-md bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
       >
-        {isLoading ? 'Registering...' : 'Register'}
+        {isLoading ? 'Вход...' : 'Войти'}
       </button>
     </form>
   );

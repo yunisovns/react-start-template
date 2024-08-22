@@ -1,8 +1,9 @@
-import { operationsApi } from './../services/operationsApi';
 import { configureStore } from '@reduxjs/toolkit';
+import { operationsApi } from '../api/operationsApi';
+import { registrationApi } from '../api/registrationApi';
 import financialOperationsReducer from '../widgets/OperationList/OperationsSlice';
 import authReducer from './authSlice';
-import { registrationApi } from '../services/registrationApi';
+import { apiSlice } from '../api/profileApi';
 
 export const store = configureStore({
   reducer: {
@@ -10,9 +11,10 @@ export const store = configureStore({
     auth: authReducer,
     [registrationApi.reducerPath]: registrationApi.reducer,
     [operationsApi.reducerPath]: operationsApi.reducer,
+    [apiSlice.reducerPath]: apiSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(registrationApi.middleware, operationsApi.middleware),
+    getDefaultMiddleware().concat(registrationApi.middleware, operationsApi.middleware,apiSlice.middleware ),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

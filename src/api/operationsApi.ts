@@ -11,6 +11,18 @@ export interface Operation {
   commandId: string;
 }
 
+export interface Operation2 {
+  id?: string;
+  name: string;
+  desc?: string;
+  amount: number;
+  date: string;
+  type: 'Profit' | 'Cost';
+  category: {id:string};
+  commandId: string;
+}
+
+
 interface Pagination {
   pageSize: number;
   pageNumber: number;
@@ -23,7 +35,7 @@ interface Sorting {
 }
 
 interface GetOperationsResponse {
-  data: Operation[];
+  data: Operation2[];
   pagination: Pagination;
   sorting: Sorting;
 }

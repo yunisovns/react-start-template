@@ -9,7 +9,7 @@ export const MainPage = () => {
       <LocalizationInitiator />
       <div className="text-1xl m-5 flex h-1/2 flex-col text-center">
         <p>{t('welcome_message')}</p>
-        <h3 className="italic">Юнисов Никита</h3>
+        <h3 className="italic">Nick</h3>
         <p>г.Москва</p>
         <h3>Цели обучения</h3>
         <p>Получение фундаментальных знаний о React</p>

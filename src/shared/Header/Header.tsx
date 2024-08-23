@@ -31,6 +31,9 @@ export const Header = memo(() => {
             <Link to="/operation" className="text-lg hover:text-indigo-400 transition-colors duration-300">
               Операции
             </Link>
+            <Link to="/categories" className="text-lg hover:text-indigo-400 transition-colors duration-300">
+              категории
+            </Link>
             <Link to="/modal" className="text-lg hover:text-indigo-400 transition-colors duration-300">
               модальное окно
             </Link>

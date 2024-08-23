@@ -4,11 +4,11 @@ import {
   useDeleteOperationMutation, 
   useUpdateOperationMutation, 
   useCreateOperationMutation,
-  Operation,
+  Operation, 
+  Operation2,
 } from '../../api/operationsApi';
 import { useGetCategoriesQuery } from '../../api/categoriesApi';
-import CategoriesList from '../../shared/Categories/CategoriesList';
-import CreateCategory from '../../shared/Categories/CreateCategory';
+
 
 const OperationsList: React.FC = () => {
   const { data: operationsData, error, isLoading } = useGetOperationsQuery({
@@ -104,42 +104,49 @@ const OperationsList: React.FC = () => {
   return (
     
     <div className="min-h-screen bg-gray-100 flex flex-col items-center py-4">
-      <CategoriesList />
-      <CreateCategory />
+      
       <div className="bg-white rounded-md shadow-md p-4 max-w-2xl w-full">
         <h1 className="text-xl font-medium text-gray-800 mb-4">Операции</h1>
         <ul className="space-y-2 w-auto">
-          {operationsData?.data.map((operation) => (
-            <li
-              key={operation.id}
-              className="border border-gray-300 bg-gray-50 rounded-md p-3 flex justify-between items-center text-sm hover:bg-gray-100 transition-colors"
-            >
-              <div className="flex items-center">
-                <div className="ml-2">
-                  <p className="font-medium text-gray-900">Категория: {operation.categoryId}</p>
-                  <p className="font-medium text-gray-900">Название: {operation.name}</p>
-                  <p className="text-gray-500">Тип: {operation.type}</p>
-                  <div className="text-gray-600">
-                    {operation.type === 'Cost' ? '-' : '+'} {operation.amount}
+          {operationsData?.data.map((operation) => {
+            // console.log(categoriesData.data);
+            const category = categoriesData?.data.find(cat => cat.id === operation.category.id).name;
+            console.log(operation);
+
+            return (
+              <li
+                key={operation.id}
+                className="border border-gray-300 bg-gray-50 rounded-md p-3 flex justify-between items-center text-sm hover:bg-gray-100 transition-colors"
+              >
+                <div className="flex items-center">
+                  <div className="ml-2">
+                    <p className="font-medium text-gray-900">
+                      Категория: {category}
+                    </p>
+                    <p className="font-medium text-gray-900">Название: {operation.name}</p>
+                    <p className="text-gray-500">Тип: {operation.type}</p>
+                    <div className="text-gray-600">
+                      {operation.type === 'Cost' ? '-' : '+'} {operation.amount}
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="flex space-x-2">
-                <button
-                  onClick={() => handleUpdate(operation.id)}
-                  className="text-blue-500 hover:text-blue-600"
-                >
-                  Редактировать
-                </button>
-                <button
-                  onClick={() => handleDelete(operation.id)}
-                  className="text-red-500 hover:text-red-600"
-                >
-                  Удалить
-                </button>
-              </div>
-            </li>
-          ))}
+                <div className="flex space-x-2">
+                  <button
+                    onClick={() => handleUpdate(operation.id)}
+                    className="text-blue-500 hover:text-blue-600"
+                  >
+                    Редактировать
+                  </button>
+                  <button
+                    onClick={() => handleDelete(operation.id)}
+                    className="text-red-500 hover:text-red-600"
+                  >
+                    Удалить
+                  </button>
+                </div>
+              </li>
+            );
+          })}
         </ul>
         <div className="mt-4">
           <h2 className="text-lg font-medium text-gray-800 mb-2">Добавить новую операцию или введите данные и редактируйте существующую операцию</h2>

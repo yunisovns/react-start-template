@@ -22,7 +22,7 @@ const CategoriesList: React.FC = () => {
 
   return (
     <div className="flex min-h-screen flex-col items-center bg-gray-100 py-4">
-      <div className="w-full max-w-2xl rounded-md bg-white p-4 shadow-md">
+      <div className="w-auto max-w-2xl rounded-md bg-white p-4 shadow-md">
         <h1 className="mb-4 text-xl font-medium text-gray-800">Список категорий</h1>
         <input
           type="text"

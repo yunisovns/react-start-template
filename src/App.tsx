@@ -10,6 +10,7 @@ import { LocalizationInitiator } from './shared/localization/LocalizationInitiat
 import { MainPage } from './widgets/MainPage/mainpage';
 import OperationList from './widgets/OperationList/OperationList2';
 import LoginPage from './widgets/LoginPage';
+import CategoriesPage from './shared/Categories/CategoriesPage';
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/profile" element={<PrivateRoute element={<ProfilePage />} />} />
             <Route path="/operation" element={<PrivateRoute element={<OperationList />} />} />
+            <Route path="/categories" element={<PrivateRoute element={<CategoriesPage />} />} />
+
             <Route path="/modal" element={<ModalInputButton />} />
             <Route path="/" element={<MainPage />} />
           </Routes>

@@ -1,16 +1,14 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import LoginForm from './features/forms/LoginForm';
-import RegForm from './features/forms/RegForm';
+import CategoriesPage from './shared/Categories/CategoriesPage';
 import ModalInputButton from './shared/ModalInputButton/ModalInputButton';
 import { ProfilePage } from './shared/Profile/ProfilePage';
 import PrivateRoute from './shared/Routes/PrivateRoute';
 import { BaseLayout } from './shared/layouts/BaseLayout';
 import { LocalizationInitiator } from './shared/localization/LocalizationInitiator';
+import LoginPage from './widgets/LoginPage';
 import { MainPage } from './widgets/MainPage/mainpage';
 import OperationList from './widgets/OperationList/OperationList2';
-import LoginPage from './widgets/LoginPage';
-import CategoriesPage from './shared/Categories/CategoriesPage';
 
 function App() {
   return (

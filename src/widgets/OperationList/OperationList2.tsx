@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
-import { 
-  useGetOperationsQuery, 
-  useDeleteOperationMutation, 
-  useUpdateOperationMutation, 
-  useCreateOperationMutation,
-  Operation, 
-  Operation2,
-} from '../../api/operationsApi';
 import { useGetCategoriesQuery } from '../../api/categoriesApi';
-
+import {
+  Operation,
+  useCreateOperationMutation,
+  useDeleteOperationMutation,
+  useGetOperationsQuery,
+  useUpdateOperationMutation,
+} from '../../api/operationsApi';
 
 const OperationsList: React.FC = () => {
-  const { data: operationsData, error, isLoading } = useGetOperationsQuery({
+  const {
+    data: operationsData,
+    error,
+    isLoading,
+  } = useGetOperationsQuery({
     pagination: { pageSize: 100, pageNumber: 1 },
     sorting: { type: 'ASC', field: 'createdAt' },
   });
@@ -29,7 +31,7 @@ const OperationsList: React.FC = () => {
     date: new Date().toISOString(),
     type: 'Profit',
     categoryId: '',
-    commandId: "23209230423539",
+    commandId: '23209230423539',
   });
 
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
@@ -91,37 +93,37 @@ const OperationsList: React.FC = () => {
         date: new Date().toISOString(),
         type: 'Profit',
         categoryId: '',
-        commandId: "23209230423539"
+        commandId: '23209230423539',
       });
     } catch (error) {
       alert('Failed to create operation');
     }
   };
 
-  if (isLoading) return <div className="text-center mt-4 text-gray-600">Loading...</div>;
-  if (error) return <div className="text-center mt-4 text-red-500">Error: {error as string}</div>;
+  if (isLoading) return <div className="mt-4 text-center text-gray-600">Loading...</div>;
+  if (error) return <div className="mt-4 text-center text-red-500">Error: {error as string}</div>;
 
   return (
-    
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center py-4">
-      
-      <div className="bg-white rounded-md shadow-md p-4 max-w-2xl w-full">
-        <h1 className="text-xl font-medium text-gray-800 mb-4">Операции</h1>
-        <ul className="space-y-2 w-auto">
+    <div className="flex min-h-screen flex-col items-center bg-gray-100 py-4">
+      <div className="w-full max-w-2xl rounded-md bg-white p-4 shadow-md">
+        <h1 className="mb-4 text-xl font-medium text-gray-800">Операции</h1>
+        <ul className="w-auto space-y-2">
           {operationsData?.data.map((operation) => {
-            // console.log(categoriesData.data);
-            const category = categoriesData?.data.find(cat => cat.id === operation.category.id).name;
+            console.log(categoriesData.data);
+            const category = operation.category
+              ? categoriesData?.data.find((cat) => cat.id === operation.category.id)?.name
+              : 'Неизвестная категория';
             console.log(operation);
 
             return (
               <li
                 key={operation.id}
-                className="border border-gray-300 bg-gray-50 rounded-md p-3 flex justify-between items-center text-sm hover:bg-gray-100 transition-colors"
+                className="flex items-center justify-between rounded-md border border-gray-300 bg-gray-50 p-3 text-sm transition-colors hover:bg-gray-100"
               >
                 <div className="flex items-center">
                   <div className="ml-2">
                     <p className="font-medium text-gray-900">
-                      Категория: {category}
+                      Категория: {category ? category : 'Неизвестная категория'}
                     </p>
                     <p className="font-medium text-gray-900">Название: {operation.name}</p>
                     <p className="text-gray-500">Тип: {operation.type}</p>
@@ -131,16 +133,10 @@ const OperationsList: React.FC = () => {
                   </div>
                 </div>
                 <div className="flex space-x-2">
-                  <button
-                    onClick={() => handleUpdate(operation.id)}
-                    className="text-blue-500 hover:text-blue-600"
-                  >
+                  <button onClick={() => handleUpdate(operation.id)} className="text-blue-500 hover:text-blue-600">
                     Редактировать
                   </button>
-                  <button
-                    onClick={() => handleDelete(operation.id)}
-                    className="text-red-500 hover:text-red-600"
-                  >
+                  <button onClick={() => handleDelete(operation.id)} className="text-red-500 hover:text-red-600">
                     Удалить
                   </button>
                 </div>
@@ -149,23 +145,25 @@ const OperationsList: React.FC = () => {
           })}
         </ul>
         <div className="mt-4">
-          <h2 className="text-lg font-medium text-gray-800 mb-2">Добавить новую операцию или введите данные и редактируйте существующую операцию</h2>
+          <h2 className="mb-2 text-lg font-medium text-gray-800">
+            Добавить новую операцию или введите данные и редактируйте существующую операцию
+          </h2>
           <div className="space-y-2">
             <input
               type="text"
               placeholder="Название"
               value={newOperation.name}
               onChange={(e) => setNewOperation({ ...newOperation, name: e.target.value })}
-              className={`border rounded-md p-2 w-full ${errors.name ? 'border-red-500' : 'border-gray-300'}`}
+              className={`w-full rounded-md border p-2 ${errors.name ? 'border-red-500' : 'border-gray-300'}`}
             />
-            {errors.name && <div className="text-red-500 text-sm">{errors.name}</div>}
+            {errors.name && <div className="text-sm text-red-500">{errors.name}</div>}
 
             <input
               type="text"
               placeholder="Описание"
               value={newOperation.desc}
               onChange={(e) => setNewOperation({ ...newOperation, desc: e.target.value })}
-              className="border border-gray-300 rounded-md p-2 w-full"
+              className="w-full rounded-md border border-gray-300 p-2"
             />
 
             <input
@@ -173,32 +171,32 @@ const OperationsList: React.FC = () => {
               placeholder="Сумма"
               value={newOperation.amount}
               onChange={(e) => setNewOperation({ ...newOperation, amount: parseFloat(e.target.value) })}
-              className={`border rounded-md p-2 w-full ${errors.amount ? 'border-red-500' : 'border-gray-300'}`}
+              className={`w-full rounded-md border p-2 ${errors.amount ? 'border-red-500' : 'border-gray-300'}`}
             />
-            {errors.amount && <div className="text-red-500 text-sm">{errors.amount}</div>}
+            {errors.amount && <div className="text-sm text-red-500">{errors.amount}</div>}
 
             <input
               type="date"
               value={newOperation.date.substring(0, 10)}
               onChange={(e) => setNewOperation({ ...newOperation, date: new Date(e.target.value).toISOString() })}
-              className={`border rounded-md p-2 w-full ${errors.date ? 'border-red-500' : 'border-gray-300'}`}
+              className={`w-full rounded-md border p-2 ${errors.date ? 'border-red-500' : 'border-gray-300'}`}
             />
-            {errors.date && <div className="text-red-500 text-sm">{errors.date}</div>}
+            {errors.date && <div className="text-sm text-red-500">{errors.date}</div>}
 
             <select
               value={newOperation.type}
               onChange={(e) => setNewOperation({ ...newOperation, type: e.target.value as 'Profit' | 'Cost' })}
-              className={`border rounded-md p-2 w-full ${errors.type ? 'border-red-500' : 'border-gray-300'}`}
+              className={`w-full rounded-md border p-2 ${errors.type ? 'border-red-500' : 'border-gray-300'}`}
             >
               <option value="Profit">Profit</option>
               <option value="Cost">Cost</option>
             </select>
-            {errors.type && <div className="text-red-500 text-sm">{errors.type}</div>}
+            {errors.type && <div className="text-sm text-red-500">{errors.type}</div>}
 
             <select
               value={newOperation.categoryId}
               onChange={(e) => setNewOperation({ ...newOperation, categoryId: e.target.value })}
-              className={`border rounded-md p-2 w-full ${errors.categoryId ? 'border-red-500' : 'border-gray-300'}`}
+              className={`w-full rounded-md border p-2 ${errors.categoryId ? 'border-red-500' : 'border-gray-300'}`}
             >
               <option value="">Выберите категорию</option>
               {categoriesData?.data.map((category) => (
@@ -207,11 +205,11 @@ const OperationsList: React.FC = () => {
                 </option>
               ))}
             </select>
-            {errors.categoryId && <div className="text-red-500 text-sm">{errors.categoryId}</div>}
+            {errors.categoryId && <div className="text-sm text-red-500">{errors.categoryId}</div>}
 
             <button
               onClick={handleCreate}
-              className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 w-full"
+              className="w-full rounded-md bg-green-500 px-4 py-2 text-white hover:bg-green-600"
             >
               Добавить операцию
             </button>

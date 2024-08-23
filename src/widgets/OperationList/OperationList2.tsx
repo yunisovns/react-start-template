@@ -7,6 +7,8 @@ import {
   Operation,
 } from '../../api/operationsApi';
 import { useGetCategoriesQuery } from '../../api/categoriesApi';
+import CategoriesList from '../../shared/Categories/CategoriesList';
+import CreateCategory from '../../shared/Categories/CreateCategory';
 
 const OperationsList: React.FC = () => {
   const { data: operationsData, error, isLoading } = useGetOperationsQuery({
@@ -100,7 +102,10 @@ const OperationsList: React.FC = () => {
   if (error) return <div className="text-center mt-4 text-red-500">Error: {error as string}</div>;
 
   return (
+    
     <div className="min-h-screen bg-gray-100 flex flex-col items-center py-4">
+      <CategoriesList />
+      <CreateCategory />
       <div className="bg-white rounded-md shadow-md p-4 max-w-2xl w-full">
         <h1 className="text-xl font-medium text-gray-800 mb-4">Операции</h1>
         <ul className="space-y-2 w-auto">
